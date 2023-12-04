@@ -1,0 +1,129 @@
+
+name: Test
+
+on:
+  workflow_dispatch:
+  release:
+    types: [ published ]
+  push:
+    branches:
+      - '*'
+    paths:
+      - '**.sh'
+      - '.github/workflows/test.yml'
+      - 'index.js'
+      - 'conf/*'
+      - 'hooks/*'
+
+
+
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+
+
+jobs:
+  testsshfs:
+    if: ${{ !contains(github.repository, 'solaris') && !contains(github.repository, 'dragonflybsd')}}
+    strategy:
+      matrix:
+        release: [ "r151046", "r151048", ""]
+        runs: [ "ubuntu-22.04"]
+    runs-on: ${{ matrix.runs }}
+    name: sshfs OmniOS
+    env:
+      MYTOKEN : ${{ secrets.MYTOKEN }}
+      MYTOKEN2: "value2"
+      SEC_VBOX : ${{ secrets.SEC_VBOX }}
+      DEBUG: 1
+    steps:
+    - uses: actions/checkout@v4
+    - name: Creating Web console
+      uses: vmactions/cf-tunnel@v0
+      id: tunnel
+      with:
+        protocol: http
+        port: 8000
+    - name: Test in OmniOS
+      id: test
+      uses: vmactions/omnios-vm@ad9f471aa3f2c312aab70b88548fc5547eddfb65
+      with:
+        envs: 'DEBUG MYTOKEN MYTOKEN2'
+        prepare: |
+          pkg  install socat
+        mem: 2048
+        copyback: false
+        release: ${{ matrix.release }}
+        nat: |
+          "10022": "22"
+          "8080": "80"
+          "8443": "443"
+          udp:"8081": "80"
+        usesh: true
+        sync: sshfs
+        run: |
+          tree .
+          tree $HOME/work/
+    - name: Test NAT
+      run: 
+        ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
+
+  test:
+    strategy:
+      matrix:
+        release: [ "r151046", "r151048", ""]
+        runs: [ "ubuntu-22.04"]
+    runs-on: ${{ matrix.runs }}
+    name: OmniOS
+    env:
+      MYTOKEN : ${{ secrets.MYTOKEN }}
+      MYTOKEN2: "value2"
+      SEC_VBOX : ${{ secrets.SEC_VBOX }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Test in OmniOS
+      id: test
+      uses: vmactions/omnios-vm@ad9f471aa3f2c312aab70b88548fc5547eddfb65
+      with:
+        envs: 'MYTOKEN MYTOKEN2'
+        prepare: |
+          pkg  install socat
+        mem: 2048
+        copyback: false
+        release: ${{ matrix.release }}
+        nat: |
+          "10022": "22"
+          "8080": "80"
+          "8443": "443"
+          udp:"8081": "80"
+        usesh: true
+        run: |
+          if [ -n "test" ]; then
+            echo "false"
+          fi
+          if [ "test" ]; then
+            echo "test"
+          fi
+          pwd
+          ls -lah
+          whoami
+          env
+          psrinfo -vp
+          cat /etc/release
+          psrinfo -v
+          echo "::memstat" | mdb -k
+          echo "OK"
+    - name: Test NAT
+      run: 
+        ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
+
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
-name: 'Solaris-vm'
-description: 'Run CI in Solaris for GitHub Actions'
+name: 'OmniOS-vm'
+description: 'Run CI in OmniOS for GitHub Actions'
 inputs:
   prepare:
     description: 'Install some tools before CI runs'
@@ -8,16 +8,16 @@ inputs:
     description: 'The CI command to run'
     required: true
   release:
-    description: 'The release version of Solaris vm'
+    description: 'The release version of OmniOS vm'
     required: false
   envs:
-    description: 'The envs to pass into Solaris vm'
+    description: 'The envs to pass into OmniOS vm'
     required: false
   mem:
     description: 'Set the memory size of the vm'
     required: false
   nat:
-    description: 'The NAT ports to Solaris vm'
+    description: 'The NAT ports to OmniOS vm'
     required: false
   usesh:
     description: 'Use sh instead of the default shell: csh'

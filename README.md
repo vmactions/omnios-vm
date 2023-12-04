@@ -1,10 +1,10 @@
-# Run GitHub CI in Solaris ![Test](https://github.com/vmactions/solaris-vm/workflows/Test/badge.svg)
+# Run GitHub CI in OmniOS ![Test](https://github.com/vmactions/omnios-vm/workflows/Test/badge.svg)
 
-Use this action to run your CI in Solaris.
+Use this action to run your CI in OmniOS.
 
-The github workflow only supports Ubuntu, Windows and MacOS. But what if you need to use Solaris?
+The github workflow only supports Ubuntu, Windows and MacOS. But what if you need to use OmniOS?
 
-This action is to support Solaris.
+This action is to support OmniOS.
 
 
 Sample workflow `test.yml`:
@@ -18,20 +18,20 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: A job to run test in Solaris
+    name: A job to run test in OmniOS
     env:
       MYTOKEN : ${{ secrets.MYTOKEN }}
       MYTOKEN2: "value2"
     steps:
     - uses: actions/checkout@v4
-    - name: Test in Solaris
+    - name: Test in OmniOS
       id: test
-      uses: vmactions/solaris-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
         prepare: |
-          pkgutil -y -i socat
+          pkg  install socat
 
         run: |
           if [ -n "test" ]; then
@@ -56,7 +56,7 @@ jobs:
 ```
 
 
-The latest major version is: `v1`, which is the most recommended to use. (You can also use the latest full version: `v1.0.0`)  
+The latest major version is: ``, which is the most recommended to use. (You can also use the latest full version: ``)  
 
 
 If you are migrating from the previous `v0`, please change the `runs-on: ` to `runs-on: ubuntu-latest`
@@ -89,13 +89,13 @@ The code is shared from the host to the VM via `rsync`, you can choose to use to
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/solaris-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
         sync: sshfs
         prepare: |
-          pkgutil -y -i socat
+          pkg  install socat
 
 
 
@@ -116,14 +116,14 @@ When using `rsync`,  you can define `copyback: false` to not copy files back fro
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/solaris-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
         sync: rsync
         copyback: false
         prepare: |
-          pkgutil -y -i socat
+          pkg  install socat
 
 
 
@@ -142,7 +142,7 @@ You can add NAT port between the host and the VM.
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/solaris-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
@@ -162,7 +162,7 @@ The default memory of the VM is 6144MB, you can use `mem` option to set the memo
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/solaris-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
@@ -172,7 +172,7 @@ The default memory of the VM is 6144MB, you can use `mem` option to set the memo
 
 
 
-It uses [the Solaris 11.4](conf/default.release.conf) by default, you can use `release` option to use another version of Solaris:
+It uses [the OmniOS r151048](conf/default.release.conf) by default, you can use `release` option to use another version of OmniOS:
 
 ```
 ...
@@ -180,18 +180,18 @@ It uses [the Solaris 11.4](conf/default.release.conf) by default, you can use `r
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/solaris-vm@v1
+      uses: vmactions/omnios-vm@
       with:
-        release: 11.4
+        release: r151046
 ...
 ```
 
-All the supported releases are here: [Solaris  11.4](conf)
+All the supported releases are here: [OmniOS  r151046, r151048](conf)
 
 
 # Under the hood
 
-We use Qemu and Libvirt to run the Solaris VM.
+We use Qemu and Libvirt to run the OmniOS VM.
 
 
 

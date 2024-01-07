@@ -186,7 +186,7 @@ It uses [the OmniOS r151048](conf/default.release.conf) by default, you can use 
 ...
 ```
 
-All the supported releases are here: OmniOS  r151046, r151048 [See all here](conf)
+All the supported releases are here: OmniOS  r151046, r151048, test.releases [See all here](conf)
 
 
 # Under the hood

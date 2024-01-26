@@ -182,7 +182,7 @@ It uses [the OmniOS r151048](conf/default.release.conf) by default, you can use 
       id: test
       uses: vmactions/omnios-vm@v1
       with:
-        release: r151046
+        release: "r151046"
 ...
 ```
 

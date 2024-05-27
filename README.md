@@ -56,7 +56,7 @@ jobs:
 ```
 
 
-The latest major version is: `v1`, which is the most recommended to use. (You can also use the latest full version: `v1.0.1`)  
+The latest major version is: `v1`, which is the most recommended to use. (You can also use the latest full version: `v1.0.2`)  
 
 
 If you are migrating from the previous `v0`, please change the `runs-on: ` to `runs-on: ubuntu-latest`
@@ -174,7 +174,7 @@ The default memory of the VM is 6144MB, you can use `mem` option to set the memo
 
 
 
-It uses [the OmniOS r151048](conf/default.release.conf) by default, you can use `release` option to use another version of OmniOS:
+It uses [the OmniOS r151050](conf/default.release.conf) by default, you can use `release` option to use another version of OmniOS:
 
 ```
 ...
@@ -188,7 +188,7 @@ It uses [the OmniOS r151048](conf/default.release.conf) by default, you can use 
 ...
 ```
 
-All the supported releases are here: OmniOS  r151046, r151048, test.releases [See all here](conf)
+All the supported releases are here: OmniOS  r151046, r151048, r151050, test.releases [See all here](conf)
 
 
 # Under the hood

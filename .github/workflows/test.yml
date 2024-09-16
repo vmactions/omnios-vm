@@ -47,7 +47,7 @@ jobs:
         port: 8000
     - name: Test in OmniOS
       id: test
-      uses: vmactions/omnios-vm@f7b9f7629162c44254e8c97906d214da02b00567
+      uses: vmactions/omnios-vm@2f97978b477e0a014767f65ecf3656b933541460
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -105,7 +105,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in OmniOS
       id: test
-      uses: vmactions/omnios-vm@f7b9f7629162c44254e8c97906d214da02b00567
+      uses: vmactions/omnios-vm@2f97978b477e0a014767f65ecf3656b933541460
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |

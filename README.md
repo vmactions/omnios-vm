@@ -4,10 +4,10 @@ Use this action to run your CI in OmniOS.
 
 The github workflow only supports Ubuntu, Windows and MacOS. But what if you need to use OmniOS?
 
-This action is to support OmniOS.
 
 
-Sample workflow `test.yml`:
+
+## 1. Example: `test.yml`:
 
 ```yml
 
@@ -78,6 +78,10 @@ So, you will have the same directory and same default env variables when you `ru
 
 
 
+
+
+## 2. Share code
+
 The code is shared from the host to the VM via `rsync` by default, you can choose to use to `sshfs` share code instead.
 
 
@@ -135,6 +139,7 @@ When using `rsync`,  you can define `copyback: false` to not copy files back fro
 ```
 
 
+## 3. NAT from host runner to the VM
 
 You can add NAT port between the host and the VM.
 
@@ -155,6 +160,8 @@ You can add NAT port between the host and the VM.
 ...
 ```
 
+
+## 4. Set memory and cpu
 
 The default memory of the VM is 6144MB, you can use `mem` option to set the memory size:
 
@@ -189,6 +196,9 @@ The VM is using all the cpu cores of the host by default, you can use `cpu` opti
 ...
 ```
 
+
+## 5. Select release
+
 It uses [the OmniOS r151050](conf/default.release.conf) by default, you can use `release` option to use another version of OmniOS:
 
 ```
@@ -207,6 +217,7 @@ All the supported releases are here: OmniOS  r151046, r151048, r151050, test.rel
 
 
 
+## 6. Custom shell
 
 Support custom shell:
 

@@ -28,7 +28,7 @@ jobs:
     if: ${{ !contains(github.repository, 'solaris') && !contains(github.repository, 'dragonflybsd') && !contains(github.repository, 'omnios')}}
     strategy:
       matrix:
-        release: [ "r151046", "r151048", "r151050" , ""]
+        release: [ "r151046", "r151048", "r151050" , "r151052" , ""]
         runs: [ "ubuntu-22.04", "ubuntu-24.04", "ubuntu-latest"]
     runs-on: ${{ matrix.runs }}
     name: sshfs OmniOS
@@ -47,7 +47,7 @@ jobs:
         port: 8000
     - name: Test in OmniOS
       id: test
-      uses: vmactions/omnios-vm@87f348048a4854b8e62bc370f293289d27510a63
+      uses: vmactions/omnios-vm@8d5f5bf7a2e0980fff37b670a6ab308cbca3356f
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -115,7 +115,7 @@ jobs:
   test:
     strategy:
       matrix:
-        release: [ "r151046", "r151048", "r151050" , ""]
+        release: [ "r151046", "r151048", "r151050" , "r151052" , ""]
         runs: [ "ubuntu-22.04", "ubuntu-24.04", "ubuntu-latest"]
     runs-on: ${{ matrix.runs }}
     name: OmniOS
@@ -127,7 +127,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in OmniOS
       id: test
-      uses: vmactions/omnios-vm@87f348048a4854b8e62bc370f293289d27510a63
+      uses: vmactions/omnios-vm@8d5f5bf7a2e0980fff37b670a6ab308cbca3356f
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |

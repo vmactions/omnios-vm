@@ -44,20 +44,27 @@ jobs:
     - name: Check arch
       id: check
       run: |
-        if [ -z "${{ matrix.release }}" ]; then
-          #ok, go ahead
-          echo "release is empty"
-          echo "run=true" >> $GITHUB_OUTPUT
-        elif [ -z "${{ matrix.arch }}" ]; then
+        _release="${{ matrix.release }}"
+        if [ -z "$_release" ]; then
+          . conf/default.release.conf
+          _release="$DEFAULT_RELEASE"
+        fi
+
+        _arch="${{ matrix.arch }}"
+        if [ "${_arch}" = "x86_64" ]; then
+          _arch=""
+        fi
+
+        if [ -z "${_arch}" ]; then
           #ok, go ahead
           echo "arch is empty"
           echo "run=true" >> $GITHUB_OUTPUT
-        elif [ -e "conf/${{ matrix.release }}-${{ matrix.arch }}.conf" ]; then
+        elif [ -e "conf/${_release}-${_arch}.conf" ]; then
           #ok, go ahead
-          echo "conf exists: conf/${{ matrix.release }}-${{ matrix.arch }}.conf"
+          echo "conf exists: conf/${_release}-${_arch}.conf"
           echo "run=true" >> $GITHUB_OUTPUT
         else
-          echo "The release ${{ matrix.release }} doesn't support ${{ matrix.arch }}, skip."
+          echo "The release ${_release} doesn't support ${_arch}, skip."
           echo "run=false" >> $GITHUB_OUTPUT
         fi
     - name: Creating Web console
@@ -70,7 +77,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@f6ebd90cca05087334c9cbb66fb240a3f1503945
+      uses: vmactions/omnios-vm@8523455544bc5fea76caa65cbb0c5cb48732284c
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -160,20 +167,27 @@ jobs:
     - name: Check arch
       id: check
       run: |
-        if [ -z "${{ matrix.release }}" ]; then
-          #ok, go ahead
-          echo "release is empty"
-          echo "run=true" >> $GITHUB_OUTPUT
-        elif [ -z "${{ matrix.arch }}" ]; then
+        _release="${{ matrix.release }}"
+        if [ -z "$_release" ]; then
+          . conf/default.release.conf
+          _release="$DEFAULT_RELEASE"
+        fi
+
+        _arch="${{ matrix.arch }}"
+        if [ "${_arch}" = "x86_64" ]; then
+          _arch=""
+        fi
+
+        if [ -z "${_arch}" ]; then
           #ok, go ahead
           echo "arch is empty"
           echo "run=true" >> $GITHUB_OUTPUT
-        elif [ -e "conf/${{ matrix.release }}-${{ matrix.arch }}.conf" ]; then
+        elif [ -e "conf/${_release}-${_arch}.conf" ]; then
           #ok, go ahead
-          echo "conf exists: conf/${{ matrix.release }}-${{ matrix.arch }}.conf"
+          echo "conf exists: conf/${_release}-${_arch}.conf"
           echo "run=true" >> $GITHUB_OUTPUT
         else
-          echo "The release ${{ matrix.release }} doesn't support ${{ matrix.arch }}, skip."
+          echo "The release ${_release} doesn't support ${_arch}, skip."
           echo "run=false" >> $GITHUB_OUTPUT
         fi
     - name: Creating Web console
@@ -186,7 +200,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@f6ebd90cca05087334c9cbb66fb240a3f1503945
+      uses: vmactions/omnios-vm@8523455544bc5fea76caa65cbb0c5cb48732284c
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -275,26 +289,33 @@ jobs:
     - name: Check arch
       id: check
       run: |
-        if [ -z "${{ matrix.release }}" ]; then
-          #ok, go ahead
-          echo "release is empty"
-          echo "run=true" >> $GITHUB_OUTPUT
-        elif [ -z "${{ matrix.arch }}" ]; then
+        _release="${{ matrix.release }}"
+        if [ -z "$_release" ]; then
+          . conf/default.release.conf
+          _release="$DEFAULT_RELEASE"
+        fi
+
+        _arch="${{ matrix.arch }}"
+        if [ "${_arch}" = "x86_64" ]; then
+          _arch=""
+        fi
+
+        if [ -z "${_arch}" ]; then
           #ok, go ahead
           echo "arch is empty"
           echo "run=true" >> $GITHUB_OUTPUT
-        elif [ -e "conf/${{ matrix.release }}-${{ matrix.arch }}.conf" ]; then
+        elif [ -e "conf/${_release}-${_arch}.conf" ]; then
           #ok, go ahead
-          echo "conf exists: conf/${{ matrix.release }}-${{ matrix.arch }}.conf"
+          echo "conf exists: conf/${_release}-${_arch}.conf"
           echo "run=true" >> $GITHUB_OUTPUT
         else
-          echo "The release ${{ matrix.release }} doesn't support ${{ matrix.arch }}, skip."
+          echo "The release ${_release} doesn't support ${_arch}, skip."
           echo "run=false" >> $GITHUB_OUTPUT
         fi
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@f6ebd90cca05087334c9cbb66fb240a3f1503945
+      uses: vmactions/omnios-vm@8523455544bc5fea76caa65cbb0c5cb48732284c
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |

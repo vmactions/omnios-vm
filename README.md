@@ -261,7 +261,7 @@ Support custom shell:
       id: vm
       uses: vmactions/omnios-vm@v1
       with:
-        sync: sshfs
+        sync: nfs
     - name: Custom shell step 1
       shell: omnios {0}
       run: |

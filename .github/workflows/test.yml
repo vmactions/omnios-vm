@@ -29,7 +29,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "r151046", "r151048", "r151050" , "r151052" , ""]
+        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , ""]
         arch: [ "aarch64", ""]
         runs: [ "ubuntu-24.04"]
 
@@ -78,7 +78,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@04f49bfa2b99c703cfeda164e1b78cde7dea2b2a
+      uses: vmactions/omnios-vm@2db3590f5718661c8dfc5a46360b993ed6f52a1d
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -155,7 +155,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "r151046", "r151048", "r151050" , "r151052" , ""]
+        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , ""]
         arch: [ "aarch64", ""]
         runs: [ "ubuntu-24.04"]
     runs-on: ${{ matrix.runs }}
@@ -203,7 +203,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@04f49bfa2b99c703cfeda164e1b78cde7dea2b2a
+      uses: vmactions/omnios-vm@2db3590f5718661c8dfc5a46360b993ed6f52a1d
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -280,7 +280,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "r151046", "r151048", "r151050" , "r151052" , ""]
+        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , ""]
         arch: [ "aarch64", ""]
         runs: [ "ubuntu-24.04"]
     runs-on: ${{ matrix.runs }}
@@ -320,7 +320,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@04f49bfa2b99c703cfeda164e1b78cde7dea2b2a
+      uses: vmactions/omnios-vm@2db3590f5718661c8dfc5a46360b993ed6f52a1d
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |

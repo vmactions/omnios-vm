@@ -31,7 +31,10 @@ jobs:
       matrix:
         release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , ""]
         arch: [ "aarch64", ""]
-        runs: [ "ubuntu-24.04"]
+        runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
+        exclude:
+          - runs: "ubuntu-24.04-arm"
+            arch: ""
 
     runs-on: ${{ matrix.runs }}
     name: sshfs OmniOS
@@ -157,7 +160,11 @@ jobs:
       matrix:
         release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , ""]
         arch: [ "aarch64", ""]
-        runs: [ "ubuntu-24.04"]
+        runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
+        exclude:
+          - runs: "ubuntu-24.04-arm"
+            arch: ""
+
     runs-on: ${{ matrix.runs }}
     name: nfs OmniOS
     env:
@@ -282,7 +289,11 @@ jobs:
       matrix:
         release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , ""]
         arch: [ "aarch64", ""]
-        runs: [ "ubuntu-24.04"]
+        runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
+        exclude:
+          - runs: "ubuntu-24.04-arm"
+            arch: ""
+
     runs-on: ${{ matrix.runs }}
     name: OmniOS
     env:

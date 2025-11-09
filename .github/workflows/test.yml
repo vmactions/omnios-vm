@@ -37,6 +37,10 @@ jobs:
             arch: ""
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
+          - arch: "aarch64"
+           runs: "ubuntu-24.04"
+          - arch: "aarch64"
+           runs: "ubuntu-24.04-arm"
 
     runs-on: ${{ matrix.runs }}
     name: sshfs OmniOS
@@ -88,7 +92,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@9f913edf9f526ba30436a14126bbbb2a1d504968
+      uses: vmactions/omnios-vm@b0e9dedf9897f9ddf2e7570ab99509751ba5684d
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -173,6 +177,10 @@ jobs:
             arch: ""
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
+          - arch: "aarch64"
+           runs: "ubuntu-24.04"
+          - arch: "aarch64"
+           runs: "ubuntu-24.04-arm"
 
     runs-on: ${{ matrix.runs }}
     name: nfs OmniOS
@@ -224,7 +232,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@9f913edf9f526ba30436a14126bbbb2a1d504968
+      uses: vmactions/omnios-vm@b0e9dedf9897f9ddf2e7570ab99509751ba5684d
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -307,6 +315,10 @@ jobs:
             arch: ""
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
+          - arch: "aarch64"
+           runs: "ubuntu-24.04"
+          - arch: "aarch64"
+           runs: "ubuntu-24.04-arm"
 
     runs-on: ${{ matrix.runs }}
     name: scp OmniOS
@@ -353,7 +365,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@9f913edf9f526ba30436a14126bbbb2a1d504968
+      uses: vmactions/omnios-vm@b0e9dedf9897f9ddf2e7570ab99509751ba5684d
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -438,6 +450,11 @@ jobs:
             arch: ""
           - runs: "ubuntu-24.04-arm"
             arch: "riscv64"
+          - arch: "aarch64"
+           runs: "ubuntu-24.04"
+          - arch: "aarch64"
+           runs: "ubuntu-24.04-arm"
+
 
     runs-on: ${{ matrix.runs }}
     name: OmniOS
@@ -481,7 +498,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@9f913edf9f526ba30436a14126bbbb2a1d504968
+      uses: vmactions/omnios-vm@b0e9dedf9897f9ddf2e7570ab99509751ba5684d
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |

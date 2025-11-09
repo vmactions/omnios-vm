@@ -41,6 +41,8 @@ jobs:
             runs: "ubuntu-24.04"
           - arch: "aarch64"
             runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
 
 
 
@@ -94,7 +96,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@f3f81b1402af4fdfc0ba60021cdaf440ff2c57ab
+      uses: vmactions/omnios-vm@c86b5f065b819735d4cc77f7de8b33d291616ac6
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -183,6 +185,8 @@ jobs:
             runs: "ubuntu-24.04"
           - arch: "aarch64"
             runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
 
 
 
@@ -236,7 +240,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@f3f81b1402af4fdfc0ba60021cdaf440ff2c57ab
+      uses: vmactions/omnios-vm@c86b5f065b819735d4cc77f7de8b33d291616ac6
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -323,6 +327,8 @@ jobs:
             runs: "ubuntu-24.04"
           - arch: "aarch64"
             runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
 
 
 
@@ -371,7 +377,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@f3f81b1402af4fdfc0ba60021cdaf440ff2c57ab
+      uses: vmactions/omnios-vm@c86b5f065b819735d4cc77f7de8b33d291616ac6
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -460,6 +466,8 @@ jobs:
             runs: "ubuntu-24.04"
           - arch: "aarch64"
             runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
 
 
 
@@ -506,7 +514,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@f3f81b1402af4fdfc0ba60021cdaf440ff2c57ab
+      uses: vmactions/omnios-vm@c86b5f065b819735d4cc77f7de8b33d291616ac6
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |

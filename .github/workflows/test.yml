@@ -96,7 +96,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@caba57fcfe8f6fa2a71d4f8e0a42296705c1adce
+      uses: vmactions/omnios-vm@52b151bdeb8b5900bfce2afb2efd6da12596b181
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -142,7 +142,7 @@ jobs:
         set -e
         echo "TEST_ENV=$TEST_ENV"
         [ "$TEST_ENV" = "abc" ]
-        ssh -vvv 20022  "uname -a;whoami;pwd"
+        ssh -vvv -p 20022 root@localhost  "uname -a;whoami;pwd"
     - name: Test custom shell
       if: ${{ steps.check.outputs.run == 'true' }}
       shell: omnios {0}
@@ -242,7 +242,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@caba57fcfe8f6fa2a71d4f8e0a42296705c1adce
+      uses: vmactions/omnios-vm@52b151bdeb8b5900bfce2afb2efd6da12596b181
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -291,7 +291,7 @@ jobs:
         grep "textfromvm" $GITHUB_WORKSPACE/vm.txt;
         echo "TEST_ENV=$TEST_ENV"
         [ "$TEST_ENV" = "abc" ]
-        ssh -vvv 20022 "uname -a;whoami;pwd"
+        ssh -vvv -p 20022 root@localhost "uname -a;whoami;pwd"
     - name: Test custom shell
       if: ${{ steps.check.outputs.run == 'true' }}
       shell: omnios {0}
@@ -384,7 +384,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@caba57fcfe8f6fa2a71d4f8e0a42296705c1adce
+      uses: vmactions/omnios-vm@52b151bdeb8b5900bfce2afb2efd6da12596b181
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -507,7 +507,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@caba57fcfe8f6fa2a71d4f8e0a42296705c1adce
+      uses: vmactions/omnios-vm@52b151bdeb8b5900bfce2afb2efd6da12596b181
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -521,6 +521,7 @@ jobs:
           "8443": "443"
           udp:"8081": "80"
         usesh: true
+        debug: true
         run: |
           env
           echo "TEST_ENV=abc" >>${GITHUB_ENV}
@@ -545,7 +546,7 @@ jobs:
         set -e
         echo "TEST_ENV=$TEST_ENV"
         [ "$TEST_ENV" = "abc" ]
-        ssh -vvv  20022  "uname -a;whoami;pwd"
+        ssh -vvv  -p 20022 root@localhost  "uname -a;whoami;pwd"
 
     - name: Test custom shell
       if: ${{ steps.check.outputs.run == 'true' }}

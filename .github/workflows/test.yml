@@ -101,6 +101,7 @@ jobs:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
           pkg  install socat
+        mem: 4096
         release: ${{ matrix.release }}
         arch: ${{ matrix.arch }}
         nat: |
@@ -247,6 +248,7 @@ jobs:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
           pkg  install socat
+        mem: 4096
         release: ${{ matrix.release }}
         arch: ${{ matrix.arch }}
         nat: |
@@ -389,6 +391,7 @@ jobs:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
           pkg  install socat
+        mem: 4096
         release: ${{ matrix.release }}
         arch: ${{ matrix.arch }}
         nat: |

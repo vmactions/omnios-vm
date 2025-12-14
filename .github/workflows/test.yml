@@ -96,7 +96,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@92380e94a06ed07131bde6ce5c4b5cf646615f50
+      uses: vmactions/omnios-vm@82cf2994238f676ebd42a45cc8eda4c169882f24
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -104,11 +104,12 @@ jobs:
         release: ${{ matrix.release }}
         arch: ${{ matrix.arch }}
         nat: |
-          "10022": "22"
+          "20022": "22"
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
         usesh: true
+        debug: true
         sync: sshfs
         run: |
           set -e
@@ -141,7 +142,7 @@ jobs:
         set -e
         echo "TEST_ENV=$TEST_ENV"
         [ "$TEST_ENV" = "abc" ]
-        ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
+        ssh -vvv 20022  "uname -a;whoami;pwd"
     - name: Test custom shell
       if: ${{ steps.check.outputs.run == 'true' }}
       shell: omnios {0}
@@ -241,7 +242,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@92380e94a06ed07131bde6ce5c4b5cf646615f50
+      uses: vmactions/omnios-vm@82cf2994238f676ebd42a45cc8eda4c169882f24
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -249,7 +250,7 @@ jobs:
         release: ${{ matrix.release }}
         arch: ${{ matrix.arch }}
         nat: |
-          "10022": "22"
+          "20022": "22"
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
@@ -290,7 +291,7 @@ jobs:
         grep "textfromvm" $GITHUB_WORKSPACE/vm.txt;
         echo "TEST_ENV=$TEST_ENV"
         [ "$TEST_ENV" = "abc" ]
-        ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
+        ssh -vvv 20022 "uname -a;whoami;pwd"
     - name: Test custom shell
       if: ${{ steps.check.outputs.run == 'true' }}
       shell: omnios {0}
@@ -383,7 +384,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@92380e94a06ed07131bde6ce5c4b5cf646615f50
+      uses: vmactions/omnios-vm@82cf2994238f676ebd42a45cc8eda4c169882f24
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -391,7 +392,7 @@ jobs:
         release: ${{ matrix.release }}
         arch: ${{ matrix.arch }}
         nat: |
-          "10022": "22"
+          "20022": "22"
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
@@ -506,7 +507,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@92380e94a06ed07131bde6ce5c4b5cf646615f50
+      uses: vmactions/omnios-vm@82cf2994238f676ebd42a45cc8eda4c169882f24
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -515,7 +516,7 @@ jobs:
         release: ${{ matrix.release }}
         arch: ${{ matrix.arch }}
         nat: |
-          "10022": "22"
+          "20022": "22"
           "8080": "80"
           "8443": "443"
           udp:"8081": "80"
@@ -544,7 +545,7 @@ jobs:
         set -e
         echo "TEST_ENV=$TEST_ENV"
         [ "$TEST_ENV" = "abc" ]
-        ssh -vvv -p 10022 -i $HOME/.ssh/host.id_rsa root@localhost "uname -a;whoami;pwd"
+        ssh -vvv  20022  "uname -a;whoami;pwd"
 
     - name: Test custom shell
       if: ${{ steps.check.outputs.run == 'true' }}

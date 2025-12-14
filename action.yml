@@ -1,6 +1,10 @@
 name: 'OmniOS-vm'
 description: 'Run CI in OmniOS for GitHub Actions'
 inputs:
+  osname:
+    description: 'The OS name'
+    required: false
+    default: 'OmniOS'
   prepare:
     description: 'Install some tools before CI runs'
     required: false

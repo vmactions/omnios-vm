@@ -25,7 +25,7 @@ concurrency:
 
 jobs:
   testsshfs:
-    if: ${{ !contains(github.repository, 'solaris') && !contains(github.repository, 'omnios')}}
+    if: ${{ !contains(github.repository, 'dragonflybsd') && !contains(github.repository, 'solaris') && !contains(github.repository, 'omnios')}}
     strategy:
       fail-fast: false
       matrix:
@@ -53,6 +53,7 @@ jobs:
       MYTOKEN2: "value2"
       SEC_VBOX : ${{ vars.SEC_VBOX }}
       DEBUG: 1
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
     - uses: actions/checkout@v4
     - name: Check arch
@@ -97,7 +98,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@5e117d4bedb1e76937f5a068499defbd41a51c66
+      uses: vmactions/omnios-vm@7687323fb1c39f5bced5f8ce5cf18f4a0f8c1561
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -201,6 +202,7 @@ jobs:
       MYTOKEN2: "value2"
       SEC_VBOX : ${{ vars.SEC_VBOX }}
       DEBUG: 1
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
     - uses: actions/checkout@v4
     - name: Check arch
@@ -244,7 +246,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@5e117d4bedb1e76937f5a068499defbd41a51c66
+      uses: vmactions/omnios-vm@7687323fb1c39f5bced5f8ce5cf18f4a0f8c1561
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -349,6 +351,7 @@ jobs:
       MYTOKEN2: "value2"
       SEC_VBOX : ${{ vars.SEC_VBOX }}
       DEBUG: 1
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
     - uses: actions/checkout@v4
     - name: Check arch
@@ -387,7 +390,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@5e117d4bedb1e76937f5a068499defbd41a51c66
+      uses: vmactions/omnios-vm@7687323fb1c39f5bced5f8ce5cf18f4a0f8c1561
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -475,6 +478,7 @@ jobs:
       MYTOKEN : ${{ secrets.MYTOKEN }}
       MYTOKEN2: "value2"
       SEC_VBOX : ${{ vars.SEC_VBOX }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
     - uses: actions/checkout@v4
     - name: Check arch
@@ -511,7 +515,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@5e117d4bedb1e76937f5a068499defbd41a51c66
+      uses: vmactions/omnios-vm@7687323fb1c39f5bced5f8ce5cf18f4a0f8c1561
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |

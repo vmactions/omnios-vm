@@ -1,5 +1,7 @@
 # Run GitHub CI in OmniOS ![Test](https://github.com/vmactions/omnios-vm/workflows/Test/badge.svg)
 
+Powered by [AnyVM.org](https://anyvm.org)
+
 Use this action to run your CI in OmniOS.
 
 The github workflow only supports Ubuntu, Windows and MacOS. But what if you need to use OmniOS?
@@ -296,7 +298,7 @@ Support custom shell:
 
 # Under the hood
 
-We use Qemu and Libvirt to run the OmniOS VM.
+We use Qemu to run the OmniOS VM.
 
 
 
@@ -304,7 +306,7 @@ We use Qemu and Libvirt to run the OmniOS VM.
 # Upcoming features:
 
 1. Support other architectures, eg: sparc64 or powerpc64.
-2. Support MacOS runner.
+
 
 
 

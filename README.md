@@ -47,7 +47,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Test in OmniOS
       id: test
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
@@ -77,7 +77,7 @@ jobs:
 ```
 
 
-The latest major version is: `v1`, which is the most recommended to use. (You can also use the latest full version: `v1.2.0`)  
+The latest major version is: ``, which is the most recommended to use. (You can also use the latest full version: ``)  
 
 
 If you are migrating from the previous `v0`, please change the `runs-on: ` to `runs-on: ubuntu-latest`
@@ -114,7 +114,7 @@ The code is shared from the host to the VM via `rsync` by default, you can choos
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
@@ -143,7 +143,7 @@ When using `rsync` or `scp`,  you can define `copyback: false` to not copy files
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
@@ -173,7 +173,7 @@ You can add NAT port between the host and the VM.
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
@@ -195,7 +195,7 @@ The default memory of the VM is 6144MB, you can use `mem` option to set the memo
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
@@ -212,7 +212,7 @@ The VM is using all the cpu cores of the host by default, you can use `cpu` opti
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         envs: 'MYTOKEN MYTOKEN2'
         usesh: true
@@ -231,7 +231,7 @@ It uses [the OmniOS r151056](conf/default.release.conf) by default, you can use 
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         release: "r151050"
 ...
@@ -253,7 +253,7 @@ The vm is using x86_64(AMD64) by default, but you can use `arch` option to chang
     - uses: actions/checkout@v4
     - name: Test
       id: test
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         release: "r151050"
         arch: aarch64
@@ -276,7 +276,7 @@ Support custom shell:
     - uses: actions/checkout@v4
     - name: Start VM
       id: vm
-      uses: vmactions/omnios-vm@v1
+      uses: vmactions/omnios-vm@
       with:
         sync: nfs
     - name: Custom shell step 1
@@ -292,6 +292,15 @@ Support custom shell:
         pwd
         echo "this is step 2, running inside the VM"
 ...
+```
+
+
+## 8. Debug locally
+
+You can use [AnyVM](https://github.com/anyvm-org/anyvm) to run the OmniOS VM locally for debugging. It's the same environment as in the GitHub Actions.
+
+```bash
+python3 anyvm.py --os omnios
 ```
 
 

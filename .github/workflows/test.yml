@@ -55,7 +55,7 @@ jobs:
       DEBUG: 1
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Check arch
       id: check
       run: |
@@ -98,7 +98,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@4abcb7d100a2a0505408b03e4fc2efc86739fb73
+      uses: vmactions/omnios-vm@bade099f2a7556430f22e73b1623441e04a6e941
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -205,7 +205,7 @@ jobs:
       DEBUG: 1
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Check arch
       id: check
       run: |
@@ -247,7 +247,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@4abcb7d100a2a0505408b03e4fc2efc86739fb73
+      uses: vmactions/omnios-vm@bade099f2a7556430f22e73b1623441e04a6e941
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -355,7 +355,7 @@ jobs:
       DEBUG: 1
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Check arch
       id: check
       run: |
@@ -392,7 +392,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@4abcb7d100a2a0505408b03e4fc2efc86739fb73
+      uses: vmactions/omnios-vm@bade099f2a7556430f22e73b1623441e04a6e941
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -485,7 +485,7 @@ jobs:
       SEC_VBOX : ${{ vars.SEC_VBOX }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Check arch
       id: check
       run: |
@@ -520,7 +520,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@4abcb7d100a2a0505408b03e4fc2efc86739fb73
+      uses: vmactions/omnios-vm@bade099f2a7556430f22e73b1623441e04a6e941
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |

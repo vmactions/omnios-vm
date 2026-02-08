@@ -322,6 +322,22 @@ When a failure occurs, the action will enable a remote VNC link and wait for you
 ...
 ```
 
+You can also use `${{ secrets.VNC_PASSWORD }}` to set the `vnc-password` parameter:
+
+```yaml
+...
+    steps:
+    - uses: actions/checkout@v6
+    - name: Test
+      id: test
+      uses: {{GITHUB_REPOSITORY}}@{{LATEST_MAJOR}}
+      with:
+        debug-on-error: true
+        vnc-password: ${{ secrets.VNC_PASSWORD }}
+
+...
+```
+
 
 
 See more: [debug on error](https://github.com/vmactions/.github/wiki/debug%E2%80%90on%E2%80%90error)

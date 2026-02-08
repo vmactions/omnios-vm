@@ -322,7 +322,7 @@ When a failure occurs, the action will enable a remote VNC link and wait for you
 ...
 ```
 
-You can also use `${{ secrets.VNC_PASSWORD }}` to set the `vnc-password` parameter:
+You can also set the `vnc-password` parameter to set a custom password to protect the VNC link:
 
 ```yaml
 ...
@@ -338,6 +338,7 @@ You can also use `${{ secrets.VNC_PASSWORD }}` to set the `vnc-password` paramet
 ...
 ```
 
+You will be asked to input the username and password when you access the VNC link. The username can be any string, the password is the value of the `vnc-password` parameter.
 
 
 See more: [debug on error](https://github.com/vmactions/.github/wiki/debug%E2%80%90on%E2%80%90error)

@@ -98,7 +98,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@7187e91187edb54b11366a7b85c5fea042904e81
+      uses: vmactions/omnios-vm@76d79d029124c479f8c2e08d787d0168f07e2ba4
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -247,7 +247,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@7187e91187edb54b11366a7b85c5fea042904e81
+      uses: vmactions/omnios-vm@76d79d029124c479f8c2e08d787d0168f07e2ba4
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -392,7 +392,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@7187e91187edb54b11366a7b85c5fea042904e81
+      uses: vmactions/omnios-vm@76d79d029124c479f8c2e08d787d0168f07e2ba4
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -521,7 +521,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@7187e91187edb54b11366a7b85c5fea042904e81
+      uses: vmactions/omnios-vm@76d79d029124c479f8c2e08d787d0168f07e2ba4
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -600,13 +600,13 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true 
-      uses: vmactions/omnios-vm@7187e91187edb54b11366a7b85c5fea042904e81
+      uses: vmactions/omnios-vm@76d79d029124c479f8c2e08d787d0168f07e2ba4
       with:
         usesh: true
         debug: true
         run: |
           echo "this is an error"
-          exit 1
+          false
     - name: Verify that the previous step failed
       if: steps.testerr.outcome != 'failure'
       run: |
@@ -628,13 +628,13 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true 
-      uses: vmactions/omnios-vm@7187e91187edb54b11366a7b85c5fea042904e81
+      uses: vmactions/omnios-vm@76d79d029124c479f8c2e08d787d0168f07e2ba4
       with:
         usesh: true
         debug: true
         run: |
           echo "this is a normal command"
-          exit 0
+          true
     - name: Verify that the previous step succeeded
       if: steps.testpass.outcome != 'success'
       run: |

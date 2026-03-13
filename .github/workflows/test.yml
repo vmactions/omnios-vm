@@ -98,7 +98,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@4cb031d91dad829c51a4a4afe7ff93b23fb742ed
+      uses: vmactions/omnios-vm@ddd4e782c53376d0713a12307603a5a103e847bb
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -247,7 +247,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@4cb031d91dad829c51a4a4afe7ff93b23fb742ed
+      uses: vmactions/omnios-vm@ddd4e782c53376d0713a12307603a5a103e847bb
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -392,7 +392,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@4cb031d91dad829c51a4a4afe7ff93b23fb742ed
+      uses: vmactions/omnios-vm@ddd4e782c53376d0713a12307603a5a103e847bb
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -521,7 +521,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@4cb031d91dad829c51a4a4afe7ff93b23fb742ed
+      uses: vmactions/omnios-vm@ddd4e782c53376d0713a12307603a5a103e847bb
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -600,7 +600,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true 
-      uses: vmactions/omnios-vm@4cb031d91dad829c51a4a4afe7ff93b23fb742ed
+      uses: vmactions/omnios-vm@ddd4e782c53376d0713a12307603a5a103e847bb
       with:
         usesh: true
         debug: true
@@ -628,7 +628,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true 
-      uses: vmactions/omnios-vm@4cb031d91dad829c51a4a4afe7ff93b23fb742ed
+      uses: vmactions/omnios-vm@ddd4e782c53376d0713a12307603a5a103e847bb
       with:
         usesh: true
         debug: true

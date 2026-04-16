@@ -98,7 +98,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@7dd5a05f423c12b397fbe2ee59d5e6a6745fcf93
+      uses: vmactions/omnios-vm@e1b9112f3706f1afce1566483ced4518bcfa1637
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -247,7 +247,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@7dd5a05f423c12b397fbe2ee59d5e6a6745fcf93
+      uses: vmactions/omnios-vm@e1b9112f3706f1afce1566483ced4518bcfa1637
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -392,7 +392,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@7dd5a05f423c12b397fbe2ee59d5e6a6745fcf93
+      uses: vmactions/omnios-vm@e1b9112f3706f1afce1566483ced4518bcfa1637
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -521,7 +521,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@7dd5a05f423c12b397fbe2ee59d5e6a6745fcf93
+      uses: vmactions/omnios-vm@e1b9112f3706f1afce1566483ced4518bcfa1637
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -590,6 +590,144 @@ jobs:
 
 
 
+
+
+
+  testcustomshell:
+    strategy:
+      fail-fast: false
+      matrix:
+        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151056" , "r151056-build"
+, ""]
+        arch: [ "aarch64", "", "riscv64"]
+        runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
+        exclude:
+          - runs: "ubuntu-24.04-arm"
+            arch: ""
+          - runs: "ubuntu-24.04-arm"
+            arch: "riscv64"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04"
+          - arch: "aarch64"
+            runs: "ubuntu-24.04-arm"
+          - arch: "riscv64"
+            runs: "ubuntu-24.04"
+
+
+
+
+    runs-on: ${{ matrix.runs }}
+    name: customshell OmniOS
+    env:
+      MYTOKEN : ${{ secrets.MYTOKEN }}
+      MYTOKEN2: "value2"
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+    - uses: actions/checkout@v6
+    - name: Check arch
+      id: check
+      run: |
+        _release="${{ matrix.release }}"
+        if [ -z "$_release" ]; then
+          . conf/default.release.conf
+          _release="$DEFAULT_RELEASE"
+        fi
+
+        _arch="${{ matrix.arch }}"
+        if [ "${_arch}" = "x86_64" ]; then
+          _arch=""
+        fi
+
+        if [ -z "${_arch}" ]; then
+          #ok, go ahead
+          echo "arch is empty"
+          echo "run=true" >> $GITHUB_OUTPUT
+        elif [ -e "conf/${_release}-${_arch}.conf" ]; then
+          #ok, go ahead
+          echo "conf exists: conf/${_release}-${_arch}.conf"
+          if [[ "$(echo "OmniOS" | tr '[:upper:]' '[:lower:]')-${_arch}" == "freebsd-riscv64" ]]; then
+            echo "The OmniOS-${_arch} doesn't support rsync, skip."
+            echo "run=false" >> $GITHUB_OUTPUT
+          else
+            echo "run=true" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "The release ${_release} doesn't support ${_arch}, skip."
+          echo "run=false" >> $GITHUB_OUTPUT
+        fi
+    - name: Test in OmniOS
+      if: ${{ steps.check.outputs.run == 'true' }}
+      id: test
+      uses: vmactions/omnios-vm@e1b9112f3706f1afce1566483ced4518bcfa1637
+      with:
+        envs: 'MYTOKEN MYTOKEN2'
+        prepare: |
+          pkg  install socat
+        mem: 4096
+        release: ${{ matrix.release }}
+        arch: ${{ matrix.arch }}
+        nat: |
+          "20022": "22"
+          "8080": "80"
+          "8443": "443"
+          udp:"8081": "80"
+        usesh: true
+        debug: true
+        custom-shell-name: vmsh
+        run: |
+          env
+          echo "TEST_ENV=abc" >>${GITHUB_ENV}
+          if [ -n "test" ]; then
+            echo "false"
+          fi
+          if [ "test" ]; then
+            echo "test"
+          fi
+          pwd
+          ls -lah
+          whoami
+          env
+          psrinfo -vp
+          cat /etc/release
+          psrinfo -v
+          echo "::memstat" | mdb -k
+          echo "OK"
+    - name: Test NAT
+      if: ${{ steps.check.outputs.run == 'true' }}
+      env:
+        VM_USER: ""
+      run: |
+        set -e
+        echo "TEST_ENV=$TEST_ENV"
+        [ "$TEST_ENV" = "abc" ]
+        ssh -v  -p 20022 ${VM_USER:-root}@localhost  "uname -a;whoami;pwd"
+
+    - name: Test custom shell
+      if: ${{ steps.check.outputs.run == 'true' }}
+      shell: vmsh {0}
+      run: |
+        pwd
+          if [ -n "test" ]; then
+            echo "false"
+          fi
+          if [ "test" ]; then
+            echo "test"
+          fi
+          pwd
+          ls -lah
+          whoami
+          env
+          psrinfo -vp
+          cat /etc/release
+          psrinfo -v
+          echo "::memstat" | mdb -k
+          echo "OK"
+
+
+
+
+
+
   testerr:
     strategy:
       fail-fast: false
@@ -600,7 +738,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true 
-      uses: vmactions/omnios-vm@7dd5a05f423c12b397fbe2ee59d5e6a6745fcf93
+      uses: vmactions/omnios-vm@e1b9112f3706f1afce1566483ced4518bcfa1637
       with:
         usesh: true
         debug: true
@@ -628,7 +766,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true 
-      uses: vmactions/omnios-vm@7dd5a05f423c12b397fbe2ee59d5e6a6745fcf93
+      uses: vmactions/omnios-vm@e1b9112f3706f1afce1566483ced4518bcfa1637
       with:
         usesh: true
         debug: true

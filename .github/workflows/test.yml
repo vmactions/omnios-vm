@@ -98,7 +98,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@51218fc3edf72271ba8e746c3e95c86ba4677f45
+      uses: vmactions/omnios-vm@b60553af030d666bac14021408de06ef8b95dd6a
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -247,7 +247,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@51218fc3edf72271ba8e746c3e95c86ba4677f45
+      uses: vmactions/omnios-vm@b60553af030d666bac14021408de06ef8b95dd6a
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -392,7 +392,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@51218fc3edf72271ba8e746c3e95c86ba4677f45
+      uses: vmactions/omnios-vm@b60553af030d666bac14021408de06ef8b95dd6a
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -521,7 +521,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@51218fc3edf72271ba8e746c3e95c86ba4677f45
+      uses: vmactions/omnios-vm@b60553af030d666bac14021408de06ef8b95dd6a
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -658,7 +658,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ steps.check.outputs.run == 'true' }}
       id: test
-      uses: vmactions/omnios-vm@51218fc3edf72271ba8e746c3e95c86ba4677f45
+      uses: vmactions/omnios-vm@b60553af030d666bac14021408de06ef8b95dd6a
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -738,7 +738,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true 
-      uses: vmactions/omnios-vm@51218fc3edf72271ba8e746c3e95c86ba4677f45
+      uses: vmactions/omnios-vm@b60553af030d666bac14021408de06ef8b95dd6a
       with:
         usesh: true
         debug: true
@@ -766,7 +766,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true 
-      uses: vmactions/omnios-vm@51218fc3edf72271ba8e746c3e95c86ba4677f45
+      uses: vmactions/omnios-vm@b60553af030d666bac14021408de06ef8b95dd6a
       with:
         usesh: true
         debug: true

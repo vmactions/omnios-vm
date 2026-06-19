@@ -74,7 +74,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/omnios-vm@b497f049fed7040acdac6fb7e67916aa341cc6fc
+      uses: vmactions/omnios-vm@27a13725b066bd53d47912d75ce98f715315db10
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -193,7 +193,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/omnios-vm@b497f049fed7040acdac6fb7e67916aa341cc6fc
+      uses: vmactions/omnios-vm@27a13725b066bd53d47912d75ce98f715315db10
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -320,7 +320,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/omnios-vm@b497f049fed7040acdac6fb7e67916aa341cc6fc
+      uses: vmactions/omnios-vm@27a13725b066bd53d47912d75ce98f715315db10
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -424,7 +424,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@b497f049fed7040acdac6fb7e67916aa341cc6fc
+      uses: vmactions/omnios-vm@27a13725b066bd53d47912d75ce98f715315db10
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -538,7 +538,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@b497f049fed7040acdac6fb7e67916aa341cc6fc
+      uses: vmactions/omnios-vm@27a13725b066bd53d47912d75ce98f715315db10
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -619,7 +619,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true
-      uses: vmactions/omnios-vm@b497f049fed7040acdac6fb7e67916aa341cc6fc
+      uses: vmactions/omnios-vm@27a13725b066bd53d47912d75ce98f715315db10
       with:
         usesh: true
         debug: true
@@ -647,7 +647,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true
-      uses: vmactions/omnios-vm@b497f049fed7040acdac6fb7e67916aa341cc6fc
+      uses: vmactions/omnios-vm@27a13725b066bd53d47912d75ce98f715315db10
       with:
         usesh: true
         debug: true

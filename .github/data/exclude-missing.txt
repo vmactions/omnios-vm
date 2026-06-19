@@ -1,0 +1,132 @@
+          - release: "r151046"
+            arch: aarch64
+          - release: "r151046"
+            arch: riscv64
+          - release: "r151046"
+            arch: powerpc64
+          - release: "r151046"
+            arch: sparc64
+          - release: "r151046"
+            arch: ppc64le
+          - release: "r151046"
+            arch: s390x
+          - release: "r151048"
+            arch: aarch64
+          - release: "r151048"
+            arch: riscv64
+          - release: "r151048"
+            arch: powerpc64
+          - release: "r151048"
+            arch: sparc64
+          - release: "r151048"
+            arch: ppc64le
+          - release: "r151048"
+            arch: s390x
+          - release: "r151050"
+            arch: aarch64
+          - release: "r151050"
+            arch: riscv64
+          - release: "r151050"
+            arch: powerpc64
+          - release: "r151050"
+            arch: sparc64
+          - release: "r151050"
+            arch: ppc64le
+          - release: "r151050"
+            arch: s390x
+          - release: "r151052"
+            arch: aarch64
+          - release: "r151052"
+            arch: riscv64
+          - release: "r151052"
+            arch: powerpc64
+          - release: "r151052"
+            arch: sparc64
+          - release: "r151052"
+            arch: ppc64le
+          - release: "r151052"
+            arch: s390x
+          - release: "r151054"
+            arch: aarch64
+          - release: "r151054"
+            arch: riscv64
+          - release: "r151054"
+            arch: powerpc64
+          - release: "r151054"
+            arch: sparc64
+          - release: "r151054"
+            arch: ppc64le
+          - release: "r151054"
+            arch: s390x
+          - release: "r151054-build"
+            arch: aarch64
+          - release: "r151054-build"
+            arch: riscv64
+          - release: "r151054-build"
+            arch: powerpc64
+          - release: "r151054-build"
+            arch: sparc64
+          - release: "r151054-build"
+            arch: ppc64le
+          - release: "r151054-build"
+            arch: s390x
+          - release: "r151056"
+            arch: aarch64
+          - release: "r151056"
+            arch: riscv64
+          - release: "r151056"
+            arch: powerpc64
+          - release: "r151056"
+            arch: sparc64
+          - release: "r151056"
+            arch: ppc64le
+          - release: "r151056"
+            arch: s390x
+          - release: "r151056-build"
+            arch: aarch64
+          - release: "r151056-build"
+            arch: riscv64
+          - release: "r151056-build"
+            arch: powerpc64
+          - release: "r151056-build"
+            arch: sparc64
+          - release: "r151056-build"
+            arch: ppc64le
+          - release: "r151056-build"
+            arch: s390x
+          - release: "r151058"
+            arch: aarch64
+          - release: "r151058"
+            arch: riscv64
+          - release: "r151058"
+            arch: powerpc64
+          - release: "r151058"
+            arch: sparc64
+          - release: "r151058"
+            arch: ppc64le
+          - release: "r151058"
+            arch: s390x
+          - release: "r151058-build"
+            arch: aarch64
+          - release: "r151058-build"
+            arch: riscv64
+          - release: "r151058-build"
+            arch: powerpc64
+          - release: "r151058-build"
+            arch: sparc64
+          - release: "r151058-build"
+            arch: ppc64le
+          - release: "r151058-build"
+            arch: s390x
+          - release: ""
+            arch: aarch64
+          - release: ""
+            arch: riscv64
+          - release: ""
+            arch: powerpc64
+          - release: ""
+            arch: sparc64
+          - release: ""
+            arch: ppc64le
+          - release: ""
+            arch: s390x

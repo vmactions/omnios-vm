@@ -45,13 +45,7 @@ jobs:
             arch: "ppc64le"
           - runs: "ubuntu-24.04-arm"
             arch: "s390x"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04-arm"
-          - arch: "riscv64"
-            runs: "ubuntu-24.04"
-
+          # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
           - release: "r151046"
@@ -196,7 +190,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 #    - name: Creating Web console
-#      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
+#      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
 #      uses: vmactions/cf-tunnel@v0
 #      id: tunnel
 #      with:
@@ -204,9 +198,9 @@ jobs:
 #        port: 8000
 
     - name: Test in OmniOS
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/omnios-vm@d8c5fb9021153d1ac3f3852ed1324bc608f12c3f
+      uses: vmactions/omnios-vm@c2fae020f871b3a6bd521833c1c78a5602ca599e
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -249,7 +243,7 @@ jobs:
           echo "OK"
 
     - name: Test NAT
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       env:
         VM_USER: ""
       run: |
@@ -258,7 +252,7 @@ jobs:
         [ "$TEST_ENV" = "abc" ]
         ssh -v -p 20022 ${VM_USER:-root}@localhost  "uname -a;whoami;pwd"
     - name: Test custom shell
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       shell: omnios {0}
       run: |
         pwd
@@ -304,13 +298,7 @@ jobs:
             arch: "ppc64le"
           - runs: "ubuntu-24.04-arm"
             arch: "s390x"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04-arm"
-          - arch: "riscv64"
-            runs: "ubuntu-24.04"
-
+          # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
           - release: "r151046"
@@ -455,9 +443,9 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - name: Test in OmniOS
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/omnios-vm@d8c5fb9021153d1ac3f3852ed1324bc608f12c3f
+      uses: vmactions/omnios-vm@c2fae020f871b3a6bd521833c1c78a5602ca599e
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -500,7 +488,7 @@ jobs:
           echo "OK"
 
     - name: Test NAT
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       env:
         VM_USER: ""
       run: |
@@ -512,7 +500,7 @@ jobs:
         [ "$TEST_ENV" = "abc" ]
         ssh -v -p 20022 ${VM_USER:-root}@localhost "uname -a;whoami;pwd"
     - name: Test custom shell
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       shell: omnios {0}
       run: |
         pwd
@@ -556,13 +544,7 @@ jobs:
             arch: "ppc64le"
           - runs: "ubuntu-24.04-arm"
             arch: "s390x"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04-arm"
-          - arch: "riscv64"
-            runs: "ubuntu-24.04"
-
+          # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
           - release: "r151046"
@@ -707,16 +689,16 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 #    - name: Creating Web console
-#      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
+#      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
 #      uses: vmactions/cf-tunnel@v0
 #      id: tunnel
 #      with:
 #        protocol: http
 #        port: 8000
     - name: Test in OmniOS
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/omnios-vm@d8c5fb9021153d1ac3f3852ed1324bc608f12c3f
+      uses: vmactions/omnios-vm@c2fae020f871b3a6bd521833c1c78a5602ca599e
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -761,7 +743,7 @@ jobs:
           echo "OK"
 
     - name: Test files
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       env:
         VM_USER: ""
       run: |
@@ -799,13 +781,7 @@ jobs:
             arch: "ppc64le"
           - runs: "ubuntu-24.04-arm"
             arch: "s390x"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04-arm"
-          - arch: "riscv64"
-            runs: "ubuntu-24.04"
-
+          # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
           - release: "r151046"
@@ -950,9 +926,9 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - name: Test in OmniOS
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@d8c5fb9021153d1ac3f3852ed1324bc608f12c3f
+      uses: vmactions/omnios-vm@c2fae020f871b3a6bd521833c1c78a5602ca599e
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -988,7 +964,7 @@ jobs:
           echo "::memstat" | mdb -k
           echo "OK"
     - name: Test NAT
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       env:
         VM_USER: ""
       run: |
@@ -998,7 +974,7 @@ jobs:
         ssh -v  -p 20022 ${VM_USER:-root}@localhost  "uname -a;whoami;pwd"
 
     - name: Test custom shell
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       shell: omnios {0}
       run: |
         pwd
@@ -1045,13 +1021,7 @@ jobs:
             arch: "ppc64le"
           - runs: "ubuntu-24.04-arm"
             arch: "s390x"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04"
-          - arch: "aarch64"
-            runs: "ubuntu-24.04-arm"
-          - arch: "riscv64"
-            runs: "ubuntu-24.04"
-
+          # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
           - release: "r151046"
@@ -1196,9 +1166,9 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - name: Test in OmniOS
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@d8c5fb9021153d1ac3f3852ed1324bc608f12c3f
+      uses: vmactions/omnios-vm@c2fae020f871b3a6bd521833c1c78a5602ca599e
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1234,7 +1204,7 @@ jobs:
           echo "::memstat" | mdb -k
           echo "OK"
     - name: Test NAT
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       env:
         VM_USER: ""
       run: |
@@ -1244,7 +1214,7 @@ jobs:
         ssh -v  -p 20022 ${VM_USER:-root}@localhost  "uname -a;whoami;pwd"
 
     - name: Test custom shell
-      if: ${{ contains(fromJSON('{"x86_64":[],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
+      if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","sshfs","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       shell: vmsh {0}
       run: |
         pwd
@@ -1279,7 +1249,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true
-      uses: vmactions/omnios-vm@d8c5fb9021153d1ac3f3852ed1324bc608f12c3f
+      uses: vmactions/omnios-vm@c2fae020f871b3a6bd521833c1c78a5602ca599e
       with:
         usesh: true
         debug: true
@@ -1307,7 +1277,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true
-      uses: vmactions/omnios-vm@d8c5fb9021153d1ac3f3852ed1324bc608f12c3f
+      uses: vmactions/omnios-vm@c2fae020f871b3a6bd521833c1c78a5602ca599e
       with:
         usesh: true
         debug: true

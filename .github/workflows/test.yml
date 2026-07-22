@@ -224,7 +224,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -514,7 +514,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -812,7 +812,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -1106,7 +1106,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1391,7 +1391,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1529,7 +1529,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         mem: 4096
         usesh: true
@@ -1599,7 +1599,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         mem: 4096
         usesh: true
@@ -1670,7 +1670,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         usesh: true
         debug: true
@@ -1698,7 +1698,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true
-      uses: vmactions/omnios-vm@5b5c79eab8a140e281b7d0dcbf629cf9ffcc0263
+      uses: vmactions/omnios-vm@39400802c10edc6f2b9403f7d86d14cb6b5e8d8a
       with:
         usesh: true
         debug: true

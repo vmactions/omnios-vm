@@ -12,6 +12,8 @@
             arch: s390x
           - release: "r151046"
             arch: i386
+          - release: "r151046"
+            arch: loongarch64
           - release: "r151048"
             arch: aarch64
           - release: "r151048"
@@ -26,6 +28,8 @@
             arch: s390x
           - release: "r151048"
             arch: i386
+          - release: "r151048"
+            arch: loongarch64
           - release: "r151050"
             arch: aarch64
           - release: "r151050"
@@ -40,6 +44,8 @@
             arch: s390x
           - release: "r151050"
             arch: i386
+          - release: "r151050"
+            arch: loongarch64
           - release: "r151052"
             arch: aarch64
           - release: "r151052"
@@ -54,6 +60,8 @@
             arch: s390x
           - release: "r151052"
             arch: i386
+          - release: "r151052"
+            arch: loongarch64
           - release: "r151054"
             arch: aarch64
           - release: "r151054"
@@ -68,6 +76,8 @@
             arch: s390x
           - release: "r151054"
             arch: i386
+          - release: "r151054"
+            arch: loongarch64
           - release: "r151054-build"
             arch: aarch64
           - release: "r151054-build"
@@ -82,6 +92,8 @@
             arch: s390x
           - release: "r151054-build"
             arch: i386
+          - release: "r151054-build"
+            arch: loongarch64
           - release: "r151056"
             arch: aarch64
           - release: "r151056"
@@ -96,6 +108,8 @@
             arch: s390x
           - release: "r151056"
             arch: i386
+          - release: "r151056"
+            arch: loongarch64
           - release: "r151056-build"
             arch: aarch64
           - release: "r151056-build"
@@ -110,6 +124,8 @@
             arch: s390x
           - release: "r151056-build"
             arch: i386
+          - release: "r151056-build"
+            arch: loongarch64
           - release: "r151058"
             arch: aarch64
           - release: "r151058"
@@ -124,6 +140,8 @@
             arch: s390x
           - release: "r151058"
             arch: i386
+          - release: "r151058"
+            arch: loongarch64
           - release: "r151058-build"
             arch: aarch64
           - release: "r151058-build"
@@ -138,6 +156,8 @@
             arch: s390x
           - release: "r151058-build"
             arch: i386
+          - release: "r151058-build"
+            arch: loongarch64
           - release: ""
             arch: aarch64
           - release: ""
@@ -152,3 +172,5 @@
             arch: s390x
           - release: ""
             arch: i386
+          - release: ""
+            arch: loongarch64

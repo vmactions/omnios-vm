@@ -30,7 +30,7 @@ jobs:
       matrix:
         release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
 , ""]
-        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386"]
+        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         exclude:
           - runs: "ubuntu-24.04-arm"
@@ -47,6 +47,8 @@ jobs:
             arch: "s390x"
           - runs: "ubuntu-24.04-arm"
             arch: "i386"
+          - runs: "ubuntu-24.04-arm"
+            arch: "loongarch64"
           # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
@@ -328,7 +330,7 @@ jobs:
       matrix:
         release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
 , ""]
-        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386"]
+        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         exclude:
           - runs: "ubuntu-24.04-arm"
@@ -345,6 +347,8 @@ jobs:
             arch: "s390x"
           - runs: "ubuntu-24.04-arm"
             arch: "i386"
+          - runs: "ubuntu-24.04-arm"
+            arch: "loongarch64"
           # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
@@ -619,7 +623,7 @@ jobs:
       matrix:
         release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
 , ""]
-        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386"]
+        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         exclude:
           - runs: "ubuntu-24.04-arm"
@@ -636,6 +640,8 @@ jobs:
             arch: "s390x"
           - runs: "ubuntu-24.04-arm"
             arch: "i386"
+          - runs: "ubuntu-24.04-arm"
+            arch: "loongarch64"
           # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
@@ -919,7 +925,7 @@ jobs:
       matrix:
         release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
 , ""]
-        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386"]
+        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         disableCache: [ "", "true"]
         exclude:
@@ -937,6 +943,8 @@ jobs:
             arch: "s390x"
           - runs: "ubuntu-24.04-arm"
             arch: "i386"
+          - runs: "ubuntu-24.04-arm"
+            arch: "loongarch64"
           # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64
@@ -1205,7 +1213,7 @@ jobs:
       matrix:
         release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
 , ""]
-        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386"]
+        arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64"]
         runs: [ "ubuntu-24.04", "ubuntu-24.04-arm"]
         exclude:
           - runs: "ubuntu-24.04-arm"
@@ -1222,6 +1230,8 @@ jobs:
             arch: "s390x"
           - runs: "ubuntu-24.04-arm"
             arch: "i386"
+          - runs: "ubuntu-24.04-arm"
+            arch: "loongarch64"
           # Manual matrix excludes only; combos with no conf are auto-excluded.
           - release: "r151046"
             arch: aarch64

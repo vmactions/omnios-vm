@@ -36,23 +36,39 @@ All the supported releases are here:
 
 
 
-| Release       | x86_64 | Comments        | LTS | End-of-Life |
-| ------------- | ------ | --------------- | --- | -------------- |
-| r151058       | ✅ (rsync,scp,nfs)     |                 |     | 2027-05-03     |
-| r151058-build | ✅ (rsync,scp,nfs)     | build-essential |     | 2027-05-03     |
-| r151056       | ✅ (rsync,scp,nfs)     |                 |     | 2026-11-02     |
-| r151056-build | ✅ (rsync,scp,nfs)     | build-essential |     | 2026-11-02     |
-| r151054       | ✅ (rsync,scp,nfs)     |                 | ✅  | 2028-05-01     |
-| r151054-build | ✅ (rsync,scp,nfs)     | build-essential | ✅  | 2028-05-01     |
-| r151052       | ✅ (rsync,scp,nfs)     |                 |     | 2025-11-03     |
-| r151050       | ✅ (rsync,scp,nfs)     |                 |     | 2025-05-05     |
-| r151048       | ✅ (rsync,scp,nfs)     |                 |     | 2024-11-04     |
+| Release | Comments | LTS | End-of-Life | x86_64 |
+|---------|---------|---------|---------|---------|
+| r151058-build | build-essential | — | 2027-05-03 | ✅ (rsync,scp,nfs) |
+| r151058 | — | — | 2027-05-03 | ✅ (rsync,scp,nfs) |
+| r151056-build | build-essential | — | 2026-11-02 | ✅ (rsync,scp,nfs) |
+| r151056 | — | — | 2026-11-02 | ✅ (rsync,scp,nfs) |
+| r151054-build | build-essential | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs) |
+| r151054 | — | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs) |
+| r151052 | — | — | 2025-11-03 | ✅ (rsync,scp,nfs) |
+| r151050 | — | — | 2025-05-05 | ✅ (rsync,scp,nfs) |
+| r151048 | — | — | 2024-11-04 | ✅ (rsync,scp,nfs) |
+| r151046 | — | ✅ | 2026-05-01 | ✅ (rsync,scp,nfs) |
 
-
-
-
-
-
+<!-- extra-column: Comments -->
+<!-- extra-value: r151058-build build-essential -->
+<!-- extra-value: r151056-build build-essential -->
+<!-- extra-value: r151054-build build-essential -->
+<!-- extra-column: LTS -->
+<!-- extra-value: r151054 ✅ -->
+<!-- extra-value: r151054-build ✅ -->
+<!-- r151046 LTS + EOL verified against omnios.org/schedule and omnios.org/releasenotes, 2026-07-26 -->
+<!-- extra-value: r151046 ✅ -->
+<!-- extra-column: End-of-Life -->
+<!-- extra-value: r151058 2027-05-03 -->
+<!-- extra-value: r151058-build 2027-05-03 -->
+<!-- extra-value: r151056 2026-11-02 -->
+<!-- extra-value: r151056-build 2026-11-02 -->
+<!-- extra-value: r151054 2028-05-01 -->
+<!-- extra-value: r151054-build 2028-05-01 -->
+<!-- extra-value: r151052 2025-11-03 -->
+<!-- extra-value: r151050 2025-05-05 -->
+<!-- extra-value: r151048 2024-11-04 -->
+<!-- extra-value: r151046 2026-05-01 -->
 
 
 

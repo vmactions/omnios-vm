@@ -246,7 +246,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -560,7 +560,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -882,7 +882,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -1200,7 +1200,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1509,7 +1509,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1647,7 +1647,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         mem: 4096
         usesh: true
@@ -1717,7 +1717,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         mem: 4096
         usesh: true
@@ -1788,7 +1788,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         usesh: true
         debug: true
@@ -1816,7 +1816,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true
-      uses: vmactions/omnios-vm@29a24ca9494e561b405cb15f121c530b70f60f88
+      uses: vmactions/omnios-vm@949e204ce49063a36ef1d083067616df5e687dda
       with:
         usesh: true
         debug: true

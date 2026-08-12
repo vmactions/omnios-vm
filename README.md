@@ -38,16 +38,16 @@ All the supported releases are here:
 
 | Release | Comments | LTS | End-of-Life | x86_64 |
 |---------|---------|---------|---------|---------|
-| r151058-build | build-essential | — | 2027-05-03 | ✅ (rsync,scp,nfs) |
-| r151058 | — | — | 2027-05-03 | ✅ (rsync,scp,nfs) |
-| r151056-build | build-essential | — | 2026-11-02 | ✅ (rsync,scp,nfs) |
-| r151056 | — | — | 2026-11-02 | ✅ (rsync,scp,nfs) |
-| r151054-build | build-essential | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs) |
-| r151054 | — | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs) |
-| r151052 | — | — | 2025-11-03 | ✅ (rsync,scp,nfs) |
-| r151050 | — | — | 2025-05-05 | ✅ (rsync,scp,nfs) |
-| r151048 | — | — | 2024-11-04 | ✅ (rsync,scp,nfs) |
-| r151046 | — | ✅ | 2026-05-01 | ✅ (rsync,scp,nfs) |
+| r151058-build | build-essential | — | 2027-05-03 | ✅ (rsync,scp,nfs,tar) |
+| r151058 | — | — | 2027-05-03 | ✅ (rsync,scp,nfs,tar) |
+| r151056-build | build-essential | — | 2026-11-02 | ✅ (rsync,scp,nfs,tar) |
+| r151056 | — | — | 2026-11-02 | ✅ (rsync,scp,nfs,tar) |
+| r151054-build | build-essential | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs,tar) |
+| r151054 | — | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs,tar) |
+| r151052 | — | — | 2025-11-03 | ✅ (rsync,scp,nfs,tar) |
+| r151050 | — | — | 2025-05-05 | ✅ (rsync,scp,nfs,tar) |
+| r151048 | — | — | 2024-11-04 | ✅ (rsync,scp,nfs,tar) |
+| r151046 | — | ✅ | 2026-05-01 | ✅ (rsync,scp,nfs,tar) |
 
 <!-- extra-column: Comments -->
 <!-- extra-value: r151058-build build-essential -->
@@ -96,7 +96,6 @@ jobs:
       uses: vmactions/omnios-vm@v1
       with:
         envs: 'MYTOKEN MYTOKEN2'
-        usesh: true
         prepare: |
           pkg  install socat
 
@@ -142,6 +141,8 @@ All the source code tree in the Host machine are mounted into the VM.
 All the `GITHUB_*` as well as `CI=true` env variables are passed into the VM.
 
 So, you will have the same directory and same default env variables when you `run` the CI script.
+
+The `prepare` and `run` scripts are always executed with `sh` in the VM, whatever the default login shell of the VM is.
 
 
 

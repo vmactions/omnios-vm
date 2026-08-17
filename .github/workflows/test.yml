@@ -262,6 +262,28 @@ jobs:
             arch: loongarch64
           - release: ""
             arch: armv7
+          - release: "r151046"
+            arch: ""
+          - release: "r151048"
+            arch: ""
+          - release: "r151050"
+            arch: ""
+          - release: "r151052"
+            arch: ""
+          - release: "r151054"
+            arch: ""
+          - release: "r151054-build"
+            arch: ""
+          - release: "r151056"
+            arch: ""
+          - release: "r151056-build"
+            arch: ""
+          - release: "r151058"
+            arch: ""
+          - release: "r151058-build"
+            arch: ""
+          - release: ""
+            arch: ""
 
 
     runs-on: ${{ matrix.runs }}

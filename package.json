@@ -1,6 +1,6 @@
 {
   "name": "vmactions-OmniOS",
-  "version": "",
+  "version": "1.3.4",
   "description": "GitHub actions for OmniOS",
   "type": "module",
   "main": "index.js",

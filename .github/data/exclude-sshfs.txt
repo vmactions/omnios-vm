@@ -18,5 +18,3 @@
             arch: ""
           - release: "r151058-build"
             arch: ""
-          - release: ""
-            arch: ""

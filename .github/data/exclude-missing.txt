@@ -178,21 +178,3 @@
             arch: loongarch64
           - release: "r151058-build"
             arch: armv7
-          - release: ""
-            arch: aarch64
-          - release: ""
-            arch: riscv64
-          - release: ""
-            arch: powerpc64
-          - release: ""
-            arch: sparc64
-          - release: ""
-            arch: ppc64le
-          - release: ""
-            arch: s390x
-          - release: ""
-            arch: i386
-          - release: ""
-            arch: loongarch64
-          - release: ""
-            arch: armv7

@@ -40,7 +40,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
+        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build", "r151060", "r151060-build"
  ]
         arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64", "armv7"]
         runs: [ "ubuntu-26.04", "ubuntu-26.04-arm"]
@@ -249,6 +249,42 @@ jobs:
             arch: loongarch64
           - release: "r151058-build"
             arch: armv7
+          - release: "r151060"
+            arch: aarch64
+          - release: "r151060"
+            arch: riscv64
+          - release: "r151060"
+            arch: powerpc64
+          - release: "r151060"
+            arch: sparc64
+          - release: "r151060"
+            arch: ppc64le
+          - release: "r151060"
+            arch: s390x
+          - release: "r151060"
+            arch: i386
+          - release: "r151060"
+            arch: loongarch64
+          - release: "r151060"
+            arch: armv7
+          - release: "r151060-build"
+            arch: aarch64
+          - release: "r151060-build"
+            arch: riscv64
+          - release: "r151060-build"
+            arch: powerpc64
+          - release: "r151060-build"
+            arch: sparc64
+          - release: "r151060-build"
+            arch: ppc64le
+          - release: "r151060-build"
+            arch: s390x
+          - release: "r151060-build"
+            arch: i386
+          - release: "r151060-build"
+            arch: loongarch64
+          - release: "r151060-build"
+            arch: armv7
           - release: "r151046"
             arch: ""
           - release: "r151048"
@@ -268,6 +304,10 @@ jobs:
           - release: "r151058"
             arch: ""
           - release: "r151058-build"
+            arch: ""
+          - release: "r151060"
+            arch: ""
+          - release: "r151060-build"
             arch: ""
 
 
@@ -291,7 +331,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -394,7 +434,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
+        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build", "r151060", "r151060-build"
  ]
         arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64", "armv7"]
         runs: [ "ubuntu-26.04", "ubuntu-26.04-arm"]
@@ -603,6 +643,42 @@ jobs:
             arch: loongarch64
           - release: "r151058-build"
             arch: armv7
+          - release: "r151060"
+            arch: aarch64
+          - release: "r151060"
+            arch: riscv64
+          - release: "r151060"
+            arch: powerpc64
+          - release: "r151060"
+            arch: sparc64
+          - release: "r151060"
+            arch: ppc64le
+          - release: "r151060"
+            arch: s390x
+          - release: "r151060"
+            arch: i386
+          - release: "r151060"
+            arch: loongarch64
+          - release: "r151060"
+            arch: armv7
+          - release: "r151060-build"
+            arch: aarch64
+          - release: "r151060-build"
+            arch: riscv64
+          - release: "r151060-build"
+            arch: powerpc64
+          - release: "r151060-build"
+            arch: sparc64
+          - release: "r151060-build"
+            arch: ppc64le
+          - release: "r151060-build"
+            arch: s390x
+          - release: "r151060-build"
+            arch: i386
+          - release: "r151060-build"
+            arch: loongarch64
+          - release: "r151060-build"
+            arch: armv7
 
 
     runs-on: ${{ matrix.runs }}
@@ -617,7 +693,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -712,7 +788,11 @@ jobs:
         u=vmnfsuser
         if ! id "$u" >/dev/null 2>&1; then
           if command -v pw >/dev/null 2>&1; then
-            pw useradd "$u" -u 4321 -d /nonexistent -s /bin/sh
+            # NextBSD's pw keeps accounts in its directory service and
+            # rejects -d: "a directory account's home is always
+            # /Local/Users/<name>".
+            pw useradd "$u" -u 4321 -d /nonexistent -s /bin/sh ||
+              pw useradd "$u" -u 4321 -s /bin/sh
           elif command -v useradd >/dev/null 2>&1; then
             useradd -u 4321 -d /nonexistent -s /bin/sh "$u"
           else
@@ -772,7 +852,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
+        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build", "r151060", "r151060-build"
  ]
         arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64", "armv7"]
         runs: [ "ubuntu-26.04", "ubuntu-26.04-arm"]
@@ -981,6 +1061,42 @@ jobs:
             arch: loongarch64
           - release: "r151058-build"
             arch: armv7
+          - release: "r151060"
+            arch: aarch64
+          - release: "r151060"
+            arch: riscv64
+          - release: "r151060"
+            arch: powerpc64
+          - release: "r151060"
+            arch: sparc64
+          - release: "r151060"
+            arch: ppc64le
+          - release: "r151060"
+            arch: s390x
+          - release: "r151060"
+            arch: i386
+          - release: "r151060"
+            arch: loongarch64
+          - release: "r151060"
+            arch: armv7
+          - release: "r151060-build"
+            arch: aarch64
+          - release: "r151060-build"
+            arch: riscv64
+          - release: "r151060-build"
+            arch: powerpc64
+          - release: "r151060-build"
+            arch: sparc64
+          - release: "r151060-build"
+            arch: ppc64le
+          - release: "r151060-build"
+            arch: s390x
+          - release: "r151060-build"
+            arch: i386
+          - release: "r151060-build"
+            arch: loongarch64
+          - release: "r151060-build"
+            arch: armv7
 
 
     runs-on: ${{ matrix.runs }}
@@ -1002,7 +1118,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -1141,7 +1257,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}', 'tar') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         mem: 4096
         debug: true
@@ -1208,7 +1324,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}', '9p') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         mem: 4096
         debug: true
@@ -1254,7 +1370,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build"
+        release: [ "r151046", "r151048", "r151050" , "r151052" , "r151054" , "r151054-build" , "r151056" , "r151056-build" , "r151058" , "r151058-build", "r151060", "r151060-build"
  ]
         arch: [ "aarch64", "", "riscv64", "powerpc64", "sparc64", "ppc64le", "s390x", "i386", "loongarch64", "armv7"]
         runs: [ "ubuntu-26.04", "ubuntu-26.04-arm"]
@@ -1458,6 +1574,42 @@ jobs:
             arch: loongarch64
           - release: "r151058-build"
             arch: armv7
+          - release: "r151060"
+            arch: aarch64
+          - release: "r151060"
+            arch: riscv64
+          - release: "r151060"
+            arch: powerpc64
+          - release: "r151060"
+            arch: sparc64
+          - release: "r151060"
+            arch: ppc64le
+          - release: "r151060"
+            arch: s390x
+          - release: "r151060"
+            arch: i386
+          - release: "r151060"
+            arch: loongarch64
+          - release: "r151060"
+            arch: armv7
+          - release: "r151060-build"
+            arch: aarch64
+          - release: "r151060-build"
+            arch: riscv64
+          - release: "r151060-build"
+            arch: powerpc64
+          - release: "r151060-build"
+            arch: sparc64
+          - release: "r151060-build"
+            arch: ppc64le
+          - release: "r151060-build"
+            arch: s390x
+          - release: "r151060-build"
+            arch: i386
+          - release: "r151060-build"
+            arch: loongarch64
+          - release: "r151060-build"
+            arch: armv7
 
 
 
@@ -1472,7 +1624,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1581,7 +1733,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         prepare: |
           pkg  install socat
@@ -1688,7 +1840,7 @@ jobs:
         sparse-checkout-cone-mode: true
     - name: Test in OmniOS
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         arch: ${{ matrix.arch }}
         debug: true
@@ -1736,7 +1888,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1871,7 +2023,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         mem: 4096
         debug: true
@@ -1940,7 +2092,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         mem: 4096
         debug: true
@@ -2027,7 +2179,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         mem: 4096
         debug: true
@@ -2095,7 +2247,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         mem: 4096
         debug: true
@@ -2176,7 +2328,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         debug: true
         # A command that EXISTS and fails, rather than `false` or a made-up
@@ -2222,7 +2374,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true
-      uses: vmactions/omnios-vm@ebe704cfe89f23fb3e4dc860dfdf1987f01ef542
+      uses: vmactions/omnios-vm@7c778971a1861a8a101fadc22cfcd649be7593dd
       with:
         debug: true
         # No `true` and no double quotes: this body runs on every guest, and

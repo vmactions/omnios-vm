@@ -178,3 +178,39 @@
             arch: loongarch64
           - release: "r151058-build"
             arch: armv7
+          - release: "r151060"
+            arch: aarch64
+          - release: "r151060"
+            arch: riscv64
+          - release: "r151060"
+            arch: powerpc64
+          - release: "r151060"
+            arch: sparc64
+          - release: "r151060"
+            arch: ppc64le
+          - release: "r151060"
+            arch: s390x
+          - release: "r151060"
+            arch: i386
+          - release: "r151060"
+            arch: loongarch64
+          - release: "r151060"
+            arch: armv7
+          - release: "r151060-build"
+            arch: aarch64
+          - release: "r151060-build"
+            arch: riscv64
+          - release: "r151060-build"
+            arch: powerpc64
+          - release: "r151060-build"
+            arch: sparc64
+          - release: "r151060-build"
+            arch: ppc64le
+          - release: "r151060-build"
+            arch: s390x
+          - release: "r151060-build"
+            arch: i386
+          - release: "r151060-build"
+            arch: loongarch64
+          - release: "r151060-build"
+            arch: armv7

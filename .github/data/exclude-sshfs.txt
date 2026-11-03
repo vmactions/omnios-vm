@@ -18,3 +18,7 @@
             arch: ""
           - release: "r151058-build"
             arch: ""
+          - release: "r151060"
+            arch: ""
+          - release: "r151060-build"
+            arch: ""

@@ -38,6 +38,8 @@ All the supported releases are here:
 
 | Release | Comments | LTS | End-of-Life | x86_64 |
 |---------|---------|---------|---------|---------|
+| r151060-build | build-essential | — | 2027-11-01 | ✅ (rsync,scp,nfs,tar) |
+| r151060 | — | — | 2027-11-01 | ✅ (rsync,scp,nfs,tar) |
 | r151058-build | build-essential | — | 2027-05-03 | ✅ (rsync,scp,nfs,tar) |
 | r151058 | — | — | 2027-05-03 | ✅ (rsync,scp,nfs,tar) |
 | r151056-build | build-essential | — | 2026-11-02 | ✅ (rsync,scp,nfs,tar) |
@@ -50,15 +52,16 @@ All the supported releases are here:
 | r151046 | — | ✅ | 2026-05-01 | ✅ (rsync,scp,nfs,tar) |
 
 <!-- extra-column: Comments -->
-<!-- extra-value: r151058-build build-essential -->
-<!-- extra-value: r151056-build build-essential -->
-<!-- extra-value: r151054-build build-essential -->
+<!-- extra-value: *-build build-essential -->
 <!-- extra-column: LTS -->
 <!-- extra-value: r151054 ✅ -->
 <!-- extra-value: r151054-build ✅ -->
 <!-- r151046 LTS + EOL verified against omnios.org/schedule and omnios.org/releasenotes, 2026-07-26 -->
 <!-- extra-value: r151046 ✅ -->
 <!-- extra-column: End-of-Life -->
+<!-- r151060 (stable, not LTS) EOL verified against omnios.org/schedule, 2026-11-03 -->
+<!-- extra-value: r151060 2027-11-01 -->
+<!-- extra-value: r151060-build 2027-11-01 -->
 <!-- extra-value: r151058 2027-05-03 -->
 <!-- extra-value: r151058-build 2027-05-03 -->
 <!-- extra-value: r151056 2026-11-02 -->

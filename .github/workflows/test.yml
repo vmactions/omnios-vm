@@ -331,7 +331,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'sshfs') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -693,7 +693,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'nfs') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -1118,7 +1118,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'scp') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         envs: 'DEBUG MYTOKEN MYTOKEN2'
         prepare: |
@@ -1257,7 +1257,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}', 'tar') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         mem: 4096
         debug: true
@@ -1324,7 +1324,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}', '9p') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         mem: 4096
         debug: true
@@ -1624,7 +1624,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')[matrix.arch == '' && 'x86_64' || matrix.arch], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -1733,7 +1733,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         prepare: |
           pkg  install socat
@@ -1840,7 +1840,7 @@ jobs:
         sparse-checkout-cone-mode: true
     - name: Test in OmniOS
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         arch: ${{ matrix.arch }}
         debug: true
@@ -1888,7 +1888,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         envs: 'MYTOKEN MYTOKEN2'
         prepare: |
@@ -2023,7 +2023,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         mem: 4096
         debug: true
@@ -2092,7 +2092,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         mem: 4096
         debug: true
@@ -2179,7 +2179,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         mem: 4096
         debug: true
@@ -2247,7 +2247,7 @@ jobs:
     - name: Test in OmniOS
       if: ${{ contains(fromJSON('{"x86_64":["rsync","scp","nfs","tar"],"aarch64":[],"riscv64":[],"powerpc64":[],"sparc64":[],"ppc64le":[],"s390x":[],"i386":[],"loongarch64":[],"armv7":[]}')['x86_64'], 'rsync') }}
       id: test
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         mem: 4096
         debug: true
@@ -2328,7 +2328,7 @@ jobs:
     - name: Test in OmniOS
       id: testerr
       continue-on-error: true
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         debug: true
         # A command that EXISTS and fails, rather than `false` or a made-up
@@ -2374,7 +2374,7 @@ jobs:
     - name: Test in OmniOS
       id: testpass
       continue-on-error: true
-      uses: vmactions/omnios-vm@c937a666f9f3035044e67e17eaa1c2b4c57a8207
+      uses: vmactions/omnios-vm@adb906c7e79badabd1336c83d93a414f6cae40c3
       with:
         debug: true
         # No `true` and no double quotes: this body runs on every guest, and

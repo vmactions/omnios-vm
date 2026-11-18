@@ -38,14 +38,14 @@ All the supported releases are here:
 
 | Release | Comments | LTS | End-of-Life | x86_64 |
 |---------|---------|---------|---------|---------|
-| r151060-build | build-essential | — | 2027-11-01 | ✅ (rsync,scp,nfs,tar) |
 | r151060 | — | — | 2027-11-01 | ✅ (rsync,scp,nfs,tar) |
-| r151058-build | build-essential | — | 2027-05-03 | ✅ (rsync,scp,nfs,tar) |
+| r151060-build | build-essential | — | 2027-11-01 | ✅ (rsync,scp,nfs,tar) |
 | r151058 | — | — | 2027-05-03 | ✅ (rsync,scp,nfs,tar) |
-| r151056-build | build-essential | — | 2026-11-02 | ✅ (rsync,scp,nfs,tar) |
+| r151058-build | build-essential | — | 2027-05-03 | ✅ (rsync,scp,nfs,tar) |
 | r151056 | — | — | 2026-11-02 | ✅ (rsync,scp,nfs,tar) |
-| r151054-build | build-essential | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs,tar) |
+| r151056-build | build-essential | — | 2026-11-02 | ✅ (rsync,scp,nfs,tar) |
 | r151054 | — | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs,tar) |
+| r151054-build | build-essential | ✅ | 2028-05-01 | ✅ (rsync,scp,nfs,tar) |
 | r151052 | — | — | 2025-11-03 | ✅ (rsync,scp,nfs,tar) |
 | r151050 | — | — | 2025-05-05 | ✅ (rsync,scp,nfs,tar) |
 | r151048 | — | — | 2024-11-04 | ✅ (rsync,scp,nfs,tar) |
